@@ -1,6 +1,6 @@
 <?php
 
-namespace TEAEbook\RulerZ\Form;
+namespace Symfony\Bridge\RulerZ\Form;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
