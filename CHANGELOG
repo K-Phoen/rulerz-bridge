@@ -1,0 +1,10 @@
+
+VERSION 1  INITIAL RELEASE
+==========================
+
+   Version 1.0 - Initial release
+      25/09/2017 20:41  1.0.0  initial release
+         9af0304 Do not try to configure GH tokens anymore
+         e0992a6 Add makefile
+         d2a5230 Add relase config
+         8c0b778 Add a quick readme
