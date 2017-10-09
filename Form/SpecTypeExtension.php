@@ -54,11 +54,6 @@ class SpecTypeExtension extends AbstractTypeExtension
             return new SpecificationToBooleanTransformer($specClass, $specOptions);
         }
 
-        if ($transformer === 'array') {
-            // TODO
-            //return new SpecificationToArrayTransformer($specClass, ',', $specOptions);
-        }
-
         throw new Exception\InvalidTransformer('Invalid specification transformer type: '.$transformer);
     }
 }
