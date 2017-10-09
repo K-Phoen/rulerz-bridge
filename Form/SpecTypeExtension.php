@@ -64,6 +64,6 @@ class SpecTypeExtension extends AbstractTypeExtension
             //return new SpecificationToArrayTransformer($specClass, ',', $specOptions);
         }
 
-        throw new \RuntimeException('Not implemented: '.$transformer);
+        throw new Exception\InvalidTransformer('Invalid specification transformer type: '.$transformer);
     }
 }
