@@ -5,7 +5,6 @@ namespace Symfony\Bridge\RulerZ\Form;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class SpecTypeExtension extends AbstractTypeExtension
@@ -18,7 +17,7 @@ class SpecTypeExtension extends AbstractTypeExtension
         $this->setDefaultOptions($resolver);
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'spec_transformer' => 'string', // string, array, boolean
