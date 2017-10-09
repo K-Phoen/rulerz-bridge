@@ -3,6 +3,16 @@ VERSION 1  INITIAL RELEASE
 ==========================
 
    Version 1.0 - Initial release
+      09/10/2017 22:31  1.0.1  Fix Spec type extension definition
+         0977463 Fix release target
+         59a0042 Simplify travis test matrix
+         22e82fd Fix forms unit tests for Symfony 2.8
+         ad06ab6 Add release target in makefile
+         56d4580 Remove dead code
+         8c44cac Remove setDefaultOptions from Spec type extension
+         68d9fbb Add a few unit tests for the Spec type extension
+         f893851 Merge pull request #1 from nicosomb/patch-1
+         cf9fb96 Removed OptionsResolverInterface usage
       25/09/2017 20:41  1.0.0  initial release
          9af0304 Do not try to configure GH tokens anymore
          e0992a6 Add makefile
