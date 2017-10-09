@@ -14,11 +14,6 @@ class SpecTypeExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $this->setDefaultOptions($resolver);
-    }
-
-    public function setDefaultOptions(OptionsResolver $resolver)
-    {
         $resolver->setDefaults([
             'spec_transformer' => 'string', // string, array, boolean
             'spec_class' => null,
