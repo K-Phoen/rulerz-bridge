@@ -6,15 +6,24 @@ use Symfony\Bridge\RulerZ\Form\SpecificationToBooleanTransformer;
 use Symfony\Bridge\RulerZ\Form\SpecificationToStringTransformer;
 use Symfony\Bridge\RulerZ\Form\SpecTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Form\Forms;
+use Symfony\Component\Form\Test\FormIntegrationTestCase;
 
-class SpecTypeExtensionTest extends TypeTestCase
+class SpecTypeExtensionTest extends FormIntegrationTestCase
 {
     protected function getTypeExtensions()
     {
         return [
             new SpecTypeExtension(),
         ];
+    }
+
+    protected function setUp()
+    {
+        $this->factory = Forms::createFormFactoryBuilder()
+            ->addExtensions($this->getExtensions())
+            ->addTypeExtensions($this->getTypeExtensions())
+            ->getFormFactory();
     }
 
     public function testItDoesNotAddAnyTransformerIfNoSpecificationClassIsGiven()
