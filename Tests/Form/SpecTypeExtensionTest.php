@@ -9,6 +9,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Test\FormIntegrationTestCase;
 
+// BC layer for SF 3.*
+if (!class_exists(\PHPUnit_Framework_TestCase::class)) {
+    class_alias(\PHPUnit\Framework\TestCase::class, \PHPUnit_Framework_TestCase::class);
+}
+
 class SpecTypeExtensionTest extends FormIntegrationTestCase
 {
     protected function getTypeExtensions()
