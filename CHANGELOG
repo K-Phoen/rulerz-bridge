@@ -2,6 +2,17 @@
 VERSION 1  INITIAL RELEASE
 ==========================
 
+   Version 1.1 - Update PHP and dependency requirements
+      18/04/2018 17:31  1.1.0  initial release
+         90f6c34 Fix the tests for Symfony 3.x
+         3f22cd3 Drop symfony 2.8 support
+         193bc23 Also test against symfony 4.0.*
+         fa6616e Require PHP >= 7.1
+         670147d Merge pull request #4 from esserj/patch-1
+         1320690 add support for SF4
+         39d30a5 Merge pull request #3 from Fanny-R/create-contributing
+         41d59be Create CONTRIBUTING.md
+
    Version 1.0 - Initial release
       09/10/2017 22:31  1.0.1  Fix Spec type extension definition
          0977463 Fix release target
