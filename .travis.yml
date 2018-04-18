@@ -13,8 +13,7 @@ matrix:
     fast_finish: true
     include:
         - php: 7.1
-          env: SYMFONY_VERSION=2.8.* COMPOSER_FLAGS='--prefer-lowest'
-        - env: SYMFONY_VERSION=3.4.*
+          env: SYMFONY_VERSION=3.4.* COMPOSER_FLAGS='--prefer-lowest'
         - env: SYMFONY_VERSION=4.0.*
 
 php:
