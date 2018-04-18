@@ -2,20 +2,22 @@
 
 namespace Tests\Validator\Constraints;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraint;
-
 use RulerZ\Parser\Parser;
 use Symfony\Bridge\RulerZ\Validator\Constraints\RuleValidator;
 use Symfony\Bridge\RulerZ\Validator\Constraints\ValidRule;
+use Symfony\Component\Validator\Context\ExecutionContext;
+use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
-class RuleValidatorTest extends \PHPUnit_Framework_TestCase
+class RuleValidatorTest extends TestCase
 {
     /**
      * @dataProvider validRulesProvider
      */
     public function testValidateWithValidRules($rule, Constraint $constraint)
     {
-        $context = $this->getExecutionContextMock();
+        $context = $this->createMock(ExecutionContext::class);
         $context->expects($this->never())->method('buildViolation');
 
         $validator = new RuleValidator(new Parser());
@@ -29,11 +31,11 @@ class RuleValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateWithInvalidRules($rule, Constraint $constraint)
     {
-        $context = $this->getExecutionContextMock();
+        $context = $this->createMock(ExecutionContext::class);
         $context
             ->expects($this->once())
             ->method('buildViolation')
-            ->will($this->returnValue($this->getConstraintViolationBuilderMock()));
+            ->willReturn($this->getConstraintViolationBuilderMock());
 
         $validator = new RuleValidator(new Parser());
         $validator->initialize($context);
@@ -41,7 +43,7 @@ class RuleValidatorTest extends \PHPUnit_Framework_TestCase
         $validator->validate($rule, $constraint);
     }
 
-    public function validRulesProvider()
+    public function validRulesProvider(): array
     {
         $simpleRuleConstraint = new ValidRule([
             'allowed_operators' => null, // all
@@ -71,7 +73,7 @@ class RuleValidatorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function inValidRulesProvider()
+    public function inValidRulesProvider(): array
     {
         $simpleRuleConstraint = new ValidRule([
             'allowed_operators' => null, // all
@@ -103,21 +105,11 @@ class RuleValidatorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    private function getExecutionContextMock()
+    private function getConstraintViolationBuilderMock(): ConstraintViolationBuilderInterface
     {
-        return $this->getMockBuilder('Symfony\Component\Validator\Context\ExecutionContext')
-            ->disableOriginalConstructor()
-            ->getMock();
-    }
+        $mock = $this->createMock(ConstraintViolationBuilderInterface::class);
+        $mock->method('setParameter')->willReturnSelf();
 
-    private function getConstraintViolationBuilderMock()
-    {
-        $builder = $this->getMock('Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface');
-
-        $builder->expects($this->any())
-            ->method('setParameter')
-            ->will($this->returnSelf());
-
-        return $builder;
+        return $mock;
     }
 }
