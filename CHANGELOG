@@ -3,6 +3,9 @@ VERSION 1  INITIAL RELEASE
 ==========================
 
    Version 1.1 - Update PHP and dependency requirements
+      01/10/2018 16:17  1.1.1  Allow RulerZ 1.0
+         8ebb84b Merge pull request #5 from K-Phoen/rulerz-version
+         5a6d069 Allow RulerZ 1.0
       18/04/2018 17:31  1.1.0  initial release
          90f6c34 Fix the tests for Symfony 3.x
          3f22cd3 Drop symfony 2.8 support
